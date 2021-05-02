@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/todolist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1 id="todolist">Make it Happen</h1>
+        <p id="day"><%= day %></p>
+        <div class="tdl-holder">
+          <h2>TO DO LIST</h2>
+            <div class="tdl-content">
+              
+                <ul>
+                  <%for(var i = 0; i < goal.length; i++){%>
+                    <form action="/delete" method="post">
+                    <li>
+                      <label><input type="checkbox"><i></i><span><%=goal[i].goals%></span>
+                        <input style="display: none;" name="goal_id" value="<%=goal[i].id%>" />
+                        <button href='#'>–</button>
+                      </label>
+                    </li>
+                  </form>
+                  <%}%>
+                </ul>
+              
+            </div>
+          <form action="/planGoal" method="POST" id="messge-form">
+            <input type="text" class="tdl-new" id="goals" name="goals" placeholder="Write new item and hit 'Enter'..." required=true/>
+          </form>
+        </div>
+      </div>
+    <!-- partial -->
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="js/todolist.js"></script>
+</body>
+</html>
