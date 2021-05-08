@@ -12,7 +12,6 @@ const nodemailer = require('nodemailer')
 var sha256 = require('js-sha256')
 const MongodbSession = require('connect-mongodb-session')(session)
 
-// const mongodb_uri = 'mongodb+srv://voidrohit:Rks&18158920@cluster0.oiqtt.mongodb.net/Tracker?retryWrites=true&w=majority'
 
 const app = express()
 const port = process.env.PORT || 3030
@@ -28,7 +27,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const store = new MongodbSession({
-  uri: 'mongodb+srv://voidrohit:Rks&18158920@cluster0.oiqtt.mongodb.net/Tracker?retryWrites=true&w=majority',
+  uri: 'mongodb connect ',
   collestion: 'sessions'
 })
 
@@ -84,13 +83,13 @@ app.post('/users', (req, res) => {
                       let transporter = nodemailer.createTransport({
                           service: 'gmail',
                           auth: {
-                              user: 'kabirsinghnitp@gmail.com' ,    // Sender email
-                              pass: 'Rks&18158920'  // Sender password
+                              user: '' ,    // Sender email
+                              pass: ''  // Sender password
                           }
                       });
                       
                       let mailOptions = {
-                          from: 'kabirsinghnitp@gmail.com',
+                          from: '',
                           to: email,
                           subject: 'Test',
                           text: `Please click on the link provided to activate the account http://localhost:3030/users/${email}/${validation_code}/${id}`
